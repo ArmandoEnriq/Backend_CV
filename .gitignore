@@ -1,0 +1,37 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Variables de entorno
+.env
+
+# Producción
+/dist
+/build
+
+# PM2
+pids/
+*.pid
+*.seed
+
+# IDEs
+.vscode/
+.idea/
+
+# Coverage (si usas herramientas de testeo)
+coverage/
+
+# Archivos Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
