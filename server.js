@@ -18,7 +18,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: "http://localhost:5174", // Cambia esto a la URL de tu frontend
+  origin: "http://localhost:5173", // Cambia esto a la URL de tu frontend
   credentials: true // Si usas cookies o autenticación
 }));
 app.use(helmet()); // Usar helmet para proteger las cabeceras HTTP
