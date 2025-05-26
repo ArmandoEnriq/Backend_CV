@@ -23,10 +23,11 @@ exports.loginAdmin = async (req, res) => {
   const token = createToken({ name: admin.name, email: admin.email}); // Crear un token JWT usando la función createToken y pasando el id y el email del usuario como payload
 if (!token) return res.status(500).json({ msg: 'Error al crear el token' }); // Verificar que el token se haya creado correctamente
 
+const secureCookie = process.env.COOKIE_SECURE === 'true';
 res.cookie('token', token, { // Configurar la cookie con el token JWT
   httpOnly: true, // La cookie no es accesible desde JavaScript del lado del cliente
-  secure: process.env.COOKIE_SECURE === 'true', // La cookie solo se envía a través de HTTPS si la variable de entorno COOKIE_SECURE está configurada como 'true'
-  sameSite: 'strict', // La cookie solo se envía en solicitudes de la misma página
+  secure: secureCookie, // La cookie solo se envía a través de HTTPS si la variable de entorno COOKIE_SECURE está configurada como 'true'
+  sameSite: secureCookie ? 'None' : 'Lax',// La cookie solo se envía en solicitudes de la misma página
   maxAge: 24 * 60 * 60 * 1000 // La cookie expira en 24 horas
 });
 
